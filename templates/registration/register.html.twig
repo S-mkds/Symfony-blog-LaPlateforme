@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+
+        {% if app.user %}
+        <div class="mb-3">
+            Vous êtes connecté : {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+        </div>
+        {% endif %}
+
+<section class="h-100 gradient-form" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-5">
+        <div class="card rounded-3 text-black">
+            <div class="row g-0">
+
+                <div class="card-body p-md-5 mx-md-4">
+
+                <div class="text-center">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                    style="width: 185px;" alt="logo">
+                    <h4 class="mt-1 mb-5 pb-1">Inscription au blog</h4>
+                </div>
+
+                    <p>Crée un compte</p>
+
+                    {{ form_start(registrationForm) }}
+                    {{ form_row(registrationForm.email) }}
+                    <br>
+                    {{ form_row(registrationForm.plainPassword, {
+                    label: 'password '
+                    }) }}
+                    <br>
+                    {{ form_row(registrationForm.agreeTerms) }}
+                    <br>
+                    <button type="submit" class="btn btn-lg btn-primary m-1">Inscription</button>
+                    {{ form_end(registrationForm) }}
+
+                <div class="d-flex align-items-center justify-content-center pb-4">
+                    <p class="mb-0 me-2">Vous un avez de compte ?</p>
+                    <a type="button" href="./login" class="btn btn-outline-danger">Se connecter</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</section>
+
+
+{% endblock %}
